@@ -1,10 +1,13 @@
 module.exports = (req, res) => {
-  const { body } = req;
-  console.log(body);
-  let blockId;
-  if (body && body.userRequest) {
-    blockId = body.userRequest.block.id;
-  }
+  const {
+    body: { userRequest },
+  } = req;
+  console.log(userRequest);
+  const {
+    block: {
+      id: { blockId },
+    },
+  } = userRequest;
 
   const responseBody = {
     version: "2.0",
